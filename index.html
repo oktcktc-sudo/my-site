@@ -10,6 +10,32 @@
             margin: 0;
             padding: 0;
         }
+        .search-block {
+            text-align: center;
+            margin: 20px;
+        }
+        .search-block input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .tags-block {
+            text-align: center;
+            margin: 10px;
+        }
+        .tags-block button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .tags-block button:hover {
+            background: #0056b3;
+        }
         .album-block {
             text-align: center;
             margin: 40px auto;
@@ -47,21 +73,58 @@
     </style>
 </head>
 <body>
+    <!-- Пошук -->
+    <div class="search-block">
+        <input type="text" id="search" placeholder="Пошук альбомів...">
+    </div>
+
+    <!-- Теги -->
+    <div class="tags-block">
+        <button data-tag="kim petras">#KimPetras</button>
+        <button data-tag="pop">#Pop</button>
+        </div>
+
     <!-- Пост 1 -->
     <div class="album-block">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2b/f1/2f/2bf12f3c-c97c-e786-606d-c0bbf08c456b/23UMGIM54377.rgb.jpg/1000x1000bb.jpg" alt="Альбом 1">
-        <p>Kim Petras</p>
-        <h3>Feed The Beast</h3>
-        <a href="https://1024terabox.com/s/1XgqRjAtG2t7v3cQxqjeJ1A" target="_blank">📥 Download</a>
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/85/af/a7/85afa78f-3e57-7ed4-ad52-8f8545aff8ca/23UM1IM03901.rgb.jpg/1000x1000bb.jpg" alt="Альбом 1">
+        <p>Артист: Kim Petras</p>
+        <h3>Problématique</h3>
+        <a href="https://1024terabox.com/s/1GUSPb06epxwFgihypQrEbQ" target="_blank">📥 Download</a>
     </div>
 
     <!-- Пост 2 -->
     <div class="album-block">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/85/af/a7/85afa78f-3e57-7ed4-ad52-8f8545aff8ca/23UM1IM03901.rgb.jpg/1000x1000bb.jpg" alt="Альбом 2">
-        <p>Kim Petras</p>
-        <h3>Problématique</h3>
-        <a href="https://1024terabox.com/s/111Em03vumiz1_8h9eF92jg" target="_blank">📥 Download</a>
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2b/f1/2f/2bf12f3c-c97c-e786-606d-c0bbf08c456b/23UMGIM54377.rgb.jpg/1000x1000bb.jpg" alt="Альбом 2">
+        <p>Артист: Kim Petras</p>
+        <h3>Feed The Beast</h3>
+        <a href="https://1024terabox.com/s/1QUzuZAA7RjJ4hTYksTgTfw" target="_blank">📥 Download</a>
     </div>
+
+    <!-- JavaScript -->
+    <script>
+    // Пошук
+    document.getElementById("search").addEventListener("keyup", function() {
+        let query = this.value.toLowerCase();
+        let albums = document.querySelectorAll(".album-block");
+
+        albums.forEach(function(album) {
+            let text = album.innerText.toLowerCase();
+            album.style.display = text.includes(query) ? "block" : "none";
+        });
+    });
+
+    // Теги
+    document.querySelectorAll(".tags-block button").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            let tag = this.getAttribute("data-tag");
+            let albums = document.querySelectorAll(".album-block");
+
+            albums.forEach(function(album) {
+                let text = album.innerText.toLowerCase();
+                album.style.display = text.includes(tag) ? "block" : "none";
+            });
+        });
+    });
+    </script>
 </body>
 </html>
- 
