@@ -128,3 +128,126 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій музичний блог</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+            margin: 0;
+            padding: 0;
+        }
+        .search-block {
+            text-align: center;
+            margin: 20px;
+        }
+        .search-block input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .tags-block {
+            text-align: center;
+            margin: 10px;
+        }
+        .tags-block button {
+            margin: 5px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        .tags-block button:hover {
+            background: #0056b3;
+        }
+        .album-block {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .album-block img {
+            width: 250px;
+            border-radius: 10px;
+        }
+        .album-block h3 {
+            margin-top: 10px;
+            color: #333;
+        }
+        .album-block p {
+            color: #555;
+            font-weight: bold;
+        }
+        .album-block a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .album-block a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Пошук -->
+    <div class="search-block">
+        <input type="text" id="search" placeholder="Пошук альбомів...">
+    </div>
+
+    <!-- Теги -->
+    <div class="tags-block">
+        <button data-tag="kim petras">#EnderGündüzlü & #MetinArıgül</button>
+        <button data-tag="pop">#Soundtrack</button>
+    </div>
+
+    <!-- Пост 1 -->
+    <div class="album-block">
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/dc/48/b0/dc48b06e-4bef-e89a-68bf-05959d66656f/192641722875_cover.jpg/1000x1000bb.jpg" alt="Альбом 1">
+        <p>Ender Gündüzlü & Metin Arıgül</p>
+        <h3>Hercai (Orijinal Dizi Müzikleri) (Soundtrack)</h3>
+        <a href="https://1024terabox.com/s/1iSe_w5ESychBBsyU-H9F2A" target="_blank">📥 Download</a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+    // Пошук
+    document.getElementById("search").addEventListener("keyup", function() {
+        let query = this.value.toLowerCase();
+        let albums = document.querySelectorAll(".album-block");
+
+        albums.forEach(function(album) {
+            let text = album.innerText.toLowerCase();
+            album.style.display = text.includes(query) ? "block" : "none";
+        });
+    });
+
+    // Теги
+    document.querySelectorAll(".tags-block button").forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            let tag = this.getAttribute("data-tag");
+            let albums = document.querySelectorAll(".album-block");
+
+            albums.forEach(function(album) {
+                let text = album.innerText.toLowerCase();
+                album.style.display = text.includes(tag) ? "block" : "none";
+            });
+        });
+    });
+    </script>
+</body>
+</html>
